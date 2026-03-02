@@ -1,0 +1,11 @@
+static/
+*credentials.json
+node_modules/*
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.DS_Store
+.env
+.venv
+ollama/ollama_data/* 
