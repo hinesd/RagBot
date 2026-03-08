@@ -29,7 +29,7 @@ if [ "$OLLAMA_SETUP_MODE" = "true" ]; then
     
     # Pull required models
     echo "Pulling models..."
-    ollama pull deepseek-r1:latest || echo "Failed to pull deepseek-r1, continuing..."
+    ollama pull phi4-mini:latest || echo "Failed to pull phi4-mini, continuing..."
     
     echo "Models downloaded successfully!"
     echo "Setup complete. Shutting down..."

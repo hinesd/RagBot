@@ -9,7 +9,7 @@ export default function Chat() {
   const [input, setInput] = useState('');
   const [sessionId, setSessionId] = useState(v4());
   
-  const { messages, sendMessage, data } = useChat({
+  const { messages, sendMessage } = useChat({
     id: sessionId,
     transport: new DefaultChatTransport({ api: `http://localhost:8000/api/chat` }),
 
@@ -20,12 +20,6 @@ export default function Chat() {
     
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {data && Object.keys(data).length > 0 && (
-        <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900 rounded text-sm">
-          <strong>Status:</strong> {data.status} | <strong>Step:</strong> {data.step}
-        </div>
-      )}
-      
       {messages.map(message => (
         <div key={message.id} className="whitespace-pre-wrap mb-4 p-2 bg-white dark:bg-gray-900 rounded">
           <strong>{message.role === 'user' ? 'User: ' : 'AI: '}</strong>

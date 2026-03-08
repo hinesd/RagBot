@@ -22,12 +22,12 @@ app.add_middleware(
 )
 
 async def generate(message_id: str, content: str):
+    yield f"data: {json.dumps({'type': 'text-start', 'id': message_id})}\n\n"
     async for chunk in graph.astream(
         {"messages": [HumanMessage(content)]}, 
         stream_mode="updates",
         config=RunnableConfig(configurable={"thread_id": message_id})
     ):
-        yield f"data: {json.dumps({'type': 'text-start', 'id': message_id})}\n\n"
         for node_name, node_data in chunk.items():
             for state_key, state_value in node_data.items():
                 if state_key == "messages":
@@ -40,7 +40,9 @@ async def generate(message_id: str, content: str):
     
 @app.post("/api/chat")
 async def chat(request: Dict[str, Any], response: Response):
+
     content = "\n".join(p.get("text", "") for p in request["messages"][-1]["parts"] if p.get("type") == "text")
+    
     response.headers["x-vercel-ai-ui-message-stream"] = "v1"
     response = StreamingResponse(generate(request["id"], content), media_type="text/event-stream")
     return response
