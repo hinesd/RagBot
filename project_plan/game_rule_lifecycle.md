@@ -13,11 +13,6 @@ The Game Rules Lifecycle ensures every ruling is traceable to the exact ruleset 
 - [3. Formats](#3-formats)
 - [4. Ruling Snapshots](#4-ruling-snapshots)
 
-### See Also:
-
-- [`storage_schema.md`](storage_schema.md) — Database tables and vector collections
-- [`agent_retrieval_logic.md`](agent_retrieval_logic.md) — How the agent resolves rulesets and retrieves content
-
 ## 1. Versioning Game Mechanics
 
 This system handles gameplay mechanics that evolve over time through versioning. Mechanics are defined in two places: the rulebook and individual cards, each with its own independent versioning lifecycle.
@@ -30,7 +25,6 @@ This system handles gameplay mechanics that evolve over time through versioning.
 | **Lifecycle independence** | Yes | Yes |
 | **New version behavior** | Fully replaces previous | Fully replaces previous |
 | **Version Corrections** | Errata, FAQs, clarifications | Errata, FAQs, clarifications |
-| **Golden rules** | Game-level (independent of versions) | N/A |
 
 ### Versioning Structure
 
